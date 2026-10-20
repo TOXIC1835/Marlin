@@ -1,0 +1,12 @@
+; XY-2 End G-Code
+G91; set positioning to relative
+M82; set extrusion to absolute
+G92 E0 ; Reset Extruder
+G1 E{material_anti_ooze_retracted_position} F600; Retract material
+G1 Z10 F1200; Raise printhead 10mm.
+G90; set absolute positioning
+G1 X0 Y{machine_depth} F3600; Move print area to front
+M107; Turn fan Off
+M104 S0; Set Hotend Temperature to 0
+M140 S0; Set Bed Temperature to 0
+; XY-2 End Code End
