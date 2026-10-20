@@ -41,7 +41,7 @@
 // #define D01_V8_220_TITAN_TMC_NO_ABL 1
 
 // XY2 Thanks to Emmanuel Hayez!
-// #define XY2_V6_255_NO_TITAN_TMC 1
+#define XY2_V6_255_NO_TITAN_TMC 1
 // #define XY2_V6_255_TITAN_TMC 1
 // #define XY2_V6_255_BMG_TMC 1
 // #define XY2_V6_255M_BMG_TMC 1
@@ -59,7 +59,7 @@
 
 // #define TFT_LVGL_UI
 // #define TFT_CLASSIC_UI
-// #define TFT_COLOR_UI
+#define TFT_COLOR_UI
 
 #if V6_330_TITAN_TMC
   #define MOTHERBOARD BOARD_CHITU3D_V6
@@ -215,7 +215,7 @@
   #define X_BED_SIZE 255
   #define Y_BED_SIZE 255
   #define Z_MAX_POS 260
-  #define CUSTOM_MACHINE_NAME "Tronxy XY-2PRO"
+  #define CUSTOM_MACHINE_NAME "Tronxy XY2-PRO"
 
 #elif XY2_V6_255_TITAN_TMC
   #define MOTHERBOARD BOARD_CHITU3D_V6
@@ -488,7 +488,7 @@
 
 // Printer's unique ID, used by some programs to differentiate between machines.
 // Choose your own or use a service like https://www.uuidgenerator.net/version4
-//#define MACHINE_UUID "00000000-0000-0000-0000-000000000000"
+#define MACHINE_UUID "ff26e6fc-ddb4-41bb-92fa-d74766a2a991"
 
 // @section extruder
 
@@ -851,8 +851,8 @@
 #define PID_K1 0.95      // Smoothing factor within any PID loop
 
 #if ENABLED(PIDTEMP)
-  //#define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
-  //#define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
+  #define PID_EDIT_MENU         // Add PID editing to the "Advanced Settings" menu. (~700 bytes of PROGMEM)
+  #define PID_AUTOTUNE_MENU     // Add PID auto-tuning to the "Advanced Settings" menu. (~250 bytes of PROGMEM)
   //#define PID_PARAMS_PER_HOTEND // Uses separate PID parameters for each extruder (useful for mismatched extruders)
                                   // Set/get with gcode: M301 E[extruder number, 0-2]
 
@@ -983,7 +983,7 @@
  * Note: For Bowden Extruders make this large enough to allow load/unload.
  */
 #define PREVENT_LENGTHY_EXTRUDE
-#define EXTRUDE_MAXLENGTH 200
+#define EXTRUDE_MAXLENGTH 500
 
 //===========================================================================
 //======================== Thermal Runaway Protection =======================
@@ -1301,7 +1301,7 @@
  *
  * See https://github.com/synthetos/TinyG/wiki/Jerk-Controlled-Motion-Explained
  */
-// #define S_CURVE_ACCELERATION
+#define S_CURVE_ACCELERATION
 
 //===========================================================================
 //============================= Z Probe Options =============================
@@ -1525,8 +1525,8 @@
  * A total of 2 does fast/slow probes with a weighted average.
  * A total of 3 or more adds more slow probes, taking the average.
  */
-//#define MULTIPLE_PROBING 2
-//#define EXTRA_PROBING    1
+#define MULTIPLE_PROBING 3
+#define EXTRA_PROBING    2
 
 /**
  * Z probes require clearance when deploying, stowing, and moving between
@@ -1707,7 +1707,7 @@
 #endif
 
 #if EITHER(MIN_SOFTWARE_ENDSTOPS, MAX_SOFTWARE_ENDSTOPS)
-  //#define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
+  #define SOFT_ENDSTOPS_MENU_ITEM  // Enable/Disable software endstops from the LCD
 #endif
 
 /**
@@ -1826,11 +1826,11 @@
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 #if WITHOUT_ABL
-  #define MESH_BED_LEVELING
+  //#define MESH_BED_LEVELING
 #else
-  #define AUTO_BED_LEVELING_BILINEAR
+  //#define AUTO_BED_LEVELING_BILINEAR
 #endif
-//#define AUTO_BED_LEVELING_UBL
+#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -1940,7 +1940,7 @@
   //#define UBL_Z_RAISE_WHEN_OFF_MESH 2.5 // When the nozzle is off the mesh, this value is used
                                           // as the Z-Height correction value.
 
-  //#define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
+  #define UBL_MESH_WIZARD         // Run several commands in a row to get a complete mesh
 
 #elif ENABLED(MESH_BED_LEVELING)
 
@@ -1976,7 +1976,7 @@
   #define LEVEL_CORNERS_INSET_LFRB { 30, 30, 30, 30 } // (mm) Left, Front, Right, Back insets
   #define LEVEL_CORNERS_HEIGHT      0.0   // (mm) Z height of nozzle at leveling points
   #define LEVEL_CORNERS_Z_HOP       4.0   // (mm) Z height of nozzle between leveling points
-  //#define LEVEL_CENTER_TOO              // Move to the center after the last corner
+  #define LEVEL_CENTER_TOO              // Move to the center after the last corner
   //#define LEVEL_CORNERS_USE_PROBE
   #if ENABLED(LEVEL_CORNERS_USE_PROBE)
     #define LEVEL_CORNERS_PROBE_TOLERANCE 0.1
@@ -2033,8 +2033,8 @@
 #define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
-  #define Z_SAFE_HOMING_X_POINT X_CENTER  // X point for Z homing
-  #define Z_SAFE_HOMING_Y_POINT Y_CENTER  // Y point for Z homing
+  #define Z_SAFE_HOMING_X_POINT 128  // X point for Z homing
+  #define Z_SAFE_HOMING_Y_POINT 128  // Y point for Z homing
 #endif
 
 // Homing speeds (mm/min)
@@ -2180,7 +2180,7 @@
 
 #if ENABLED(NOZZLE_PARK_FEATURE)
   // Specify a park position as { X, Y, Z_raise }
-  #define NOZZLE_PARK_POINT { (X_MIN_POS + 10), (Y_MIN_POS + 10), 20 }
+  #define NOZZLE_PARK_POINT { (X_MIN_POS + 50), (Y_MIN_POS + 30), 20 }
   //#define NOZZLE_PARK_X_ONLY          // X move only is required to park
   //#define NOZZLE_PARK_Y_ONLY          // Y move only is required to park
   #define NOZZLE_PARK_Z_RAISE_MIN   2   // (mm) Always raise Z by at least this distance
@@ -2345,7 +2345,7 @@
  *
  * :{ 'en':'English', 'an':'Aragonese', 'bg':'Bulgarian', 'ca':'Catalan', 'cz':'Czech', 'da':'Danish', 'de':'German', 'el':'Greek', 'el_gr':'Greek (Greece)', 'es':'Spanish', 'eu':'Basque-Euskera', 'fi':'Finnish', 'fr':'French', 'gl':'Galician', 'hr':'Croatian', 'hu':'Hungarian', 'it':'Italian', 'jp_kana':'Japanese', 'ko_KR':'Korean (South Korea)', 'nl':'Dutch', 'pl':'Polish', 'pt':'Portuguese', 'pt_br':'Portuguese (Brazilian)', 'ro':'Romanian', 'ru':'Russian', 'sk':'Slovak', 'sv':'Swedish', 'tr':'Turkish', 'uk':'Ukrainian', 'vi':'Vietnamese', 'zh_CN':'Chinese (Simplified)', 'zh_TW':'Chinese (Traditional)' }
  */
-#define LCD_LANGUAGE en
+#define LCD_LANGUAGE de
 
 /**
  * LCD Character Set
@@ -2369,7 +2369,7 @@
  *
  * :['JAPANESE', 'WESTERN', 'CYRILLIC']
  */
-#define DISPLAY_CHARSET_HD44780 JAPANESE
+#define DISPLAY_CHARSET_HD44780 WESTERN
 
 /**
  * Info Screen Style (0:Classic, 1:Průša)
@@ -3053,10 +3053,10 @@
 // or use 16bit color (e.g. 0x0000 = black, 0xFFE0 = yellow)
 // see https://ee-programming-notepad.blogspot.com/2016/10/16-bit-color-generator-picker.html
 #ifdef XY2_MODELS
-  #define TFT_MARLINUI_COLOR 0xFFF9       // COLOR_WHITE  // main foreground color
+  #define TFT_MARLINUI_COLOR 0xF110       // COLOR_WHITE  // main foreground color
   #define TFT_MARLINBG_COLOR COLOR_BLACK  // background color
   #define TFT_BTCANCEL_COLOR COLOR_RED    // cancel button
-  #define TFT_BTARROWS_COLOR COLOR_BLUE   // COLOR_WHITE  // arrows up/down
+  #define TFT_BTARROWS_COLOR 0x4006   // COLOR_WHITE  // arrows up/down
   #define TFT_BTOKMENU_COLOR 0x07E0       // COLOR_GREEN  // enter button
 #else
   #define TFT_MARLINUI_COLOR COLOR_WHITE  // main foreground color
