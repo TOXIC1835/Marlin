@@ -889,7 +889,7 @@
  * heater. If your configuration is significantly different than this and you don't understand
  * the issues involved, don't use bed PID until someone else verifies that your hardware works.
  */
-//#define PIDTEMPBED
+#define PIDTEMPBED
 
 //#define BED_LIMIT_SWITCHING
 
@@ -1098,7 +1098,7 @@
   #define Z_DRIVER_TYPE TMC2208_STANDALONE
   //#define X2_DRIVER_TYPE A4988
   //#define Y2_DRIVER_TYPE A4988
-  //#define Z2_DRIVER_TYPE A4988
+  #define Z2_DRIVER_TYPE TMC2208_STANDALONE
   //#define Z3_DRIVER_TYPE A4988
   //#define Z4_DRIVER_TYPE A4988
   #define E0_DRIVER_TYPE TMC2208_STANDALONE
@@ -1671,8 +1671,8 @@
 // @section machine
 
 // The size of the printable area
-// #define X_BED_SIZE 330
-// #define Y_BED_SIZE 330
+#define X_BED_SIZE 255
+#define Y_BED_SIZE 255
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1828,9 +1828,9 @@
 #if WITHOUT_ABL
   //#define MESH_BED_LEVELING
 #else
-  //#define AUTO_BED_LEVELING_BILINEAR
+  #define AUTO_BED_LEVELING_BILINEAR
 #endif
-#define AUTO_BED_LEVELING_UBL
+//#define AUTO_BED_LEVELING_UBL
 //#define MESH_BED_LEVELING
 
 /**
@@ -1966,7 +1966,7 @@
 #if ENABLED(LCD_BED_LEVELING)
   #define MESH_EDIT_Z_STEP  0.025 // (mm) Step size while manually probing Z axis.
   #define LCD_PROBE_Z_RANGE 4     // (mm) Z Range centered on Z_MIN_POS for LCD Z adjustment
-  //#define MESH_EDIT_MENU        // Add a menu to edit mesh points
+  #define MESH_EDIT_MENU        // Add a menu to edit mesh points
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
@@ -2017,8 +2017,8 @@
 
 // Manually set the home position. Leave these undefined for automatic settings.
 // For DELTA this is the top-center of the Cartesian print volume.
-//#define MANUAL_X_HOME_POS 0
-//#define MANUAL_Y_HOME_POS 0
+//#define MANUAL_X_HOME_POS 50
+//#define MANUAL_Y_HOME_POS 30
 //#define MANUAL_Z_HOME_POS 0
 
 // Use "Z Safe Homing" to avoid homing with a Z probe outside the bed area.
